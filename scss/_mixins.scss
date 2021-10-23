@@ -1,0 +1,69 @@
+@mixin fluid-type(
+  $min-font-size: 32px,
+  $max-font-size: 42px,
+  $lower-range: 375px,
+  $upper-range: 1440px
+) {
+  font-size: calc(
+    #{$min-font-size} + #{(
+        ($max-font-size / ($max-font-size * 0 + 1)) -
+          ($min-font-size / ($min-font-size * 0 + 1))
+      )} * ((100vw - #{$lower-range}) / #{(
+            ($upper-range / ($upper-range * 0 + 1)) -
+              ($lower-range / ($lower-range * 0 + 1))
+          )})
+  );
+
+  @media screen and (max-width: $lower-range) {
+    font-size: $min-font-size;
+  }
+  @media screen and (min-width: $upper-range) {
+    font-size: $max-font-size;
+  }
+}
+
+@mixin fluid-line-height(
+  $min-line-height: 38px,
+  $max-line-height: 50px,
+  $lower-range: 375px,
+  $upper-range: 1440px
+) {
+  line-height: calc(
+    #{$min-line-height} + #{(
+        ($max-line-height / ($max-line-height * 0 + 1)) -
+          ($min-line-height / ($min-line-height * 0 + 1))
+      )} * ((100vw - #{$lower-range}) / #{(
+            ($upper-range / ($upper-range * 0 + 1)) -
+              ($lower-range / ($lower-range * 0 + 1))
+          )})
+  );
+
+  @media screen and (max-width: $lower-range) {
+    line-height: $min-line-height;
+  }
+  @media screen and (min-width: $upper-range) {
+    line-height: $max-line-height;
+  }
+}
+
+@mixin separator {
+  border: 2px solid #e6e6f0;
+  background-color: #e6e6f0;
+}
+
+@mixin simple-text {
+  font-family: "TT Norms", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 26px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: black;
+}
+@mixin H3-Caps {
+  font-weight: bold;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0;
+}
